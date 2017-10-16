@@ -1,4 +1,4 @@
-package cn.mldn.myspring.ioc;
+package cn.mldn.myspring.context;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

@@ -1,4 +1,4 @@
-package cn.mldn.myspring.ioc;
+package cn.mldn.myspring.context;
 
 /**
  * Hello world!
