@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+	<bean id="hiredateObject" class="java.util.Date"/>
+	<bean id="emp" class="cn.mldn.myspring.di.vo.Emp">
+		<property name="deptno" value="11"/>
+		<property name="name" value="mzz"/>
+		<property name="hirdate" ref="hiredateObject"/>
+		<property name="sal" value="1080.2"/>
+		<property name="car">
+			<list>
+				<ref bean="carA" />
+				<ref bean="carB"/>
+			</list>
+		</property>
+		<property name="infos">
+			<list>
+				<value>zzz1</value>
+				<value>zzz2</value>
+			</list>
+		</property>
+		<!--set集合的注入默认按照LinkedHashset,可以按存放顺序排序且无重复元素  -->
+		<property name="msgs">
+			<set>
+				<value>hhh11</value>
+				<value>hhh22</value>
+				<value>hhh11</value>
+			</set>
+		</property>
+		<!--map集合的注入使用entry设置key和value,默认按照LinkedHashMap的方式存放,相同键的值会进行覆盖操作  -->
+		<property name="fcs">
+			<map>
+				<entry key="1" value="mmmm"/>
+				<entry key="1" value="zzzz"/>
+				<entry key="2" value="cccc"/>
+			</map>
+		</property>
+		<property name="enable">
+			<value>no</value>
+		</property>
+		<property name="pro">
+			<props>
+				<prop key="z01">gogogo0</prop>
+				<prop key="z02">gogogo1</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="carA" class="cn.mldn.myspring.di.vo.Car">
+		<property name="cname" value="bmw"></property>
+	</bean>
+	<bean id="carB" class="cn.mldn.myspring.di.vo.Car">
+		<property name="cname" value="bc"></property>
+	</bean>
+	
+	<!--p命名空间的使用 
+	<bean id="emp" class="cn.mldn.myspring.di.vo.Emp" p:deptno="11" p:name="mzz" p:hirdate-ref="hiredateObject" p:sal="1080.2"/> 
+	-->
+	<!--构造方法注入,按照构造方法参数顺序传值，也可以通过增加index索引的形式来定义参数顺序  -->
+	<bean id="dept" class="cn.mldn.myspring.di.vo.Dept">
+		<constructor-arg value="10"></constructor-arg>
+		<constructor-arg value="Manager"></constructor-arg>
+	</bean>
+	<!-- lazy-init="true" 表示容器加载时不进行实例化操作,指导getBean时才会进行实例化操作
+	<bean id="message" class="cn.mldn.myspring.di.vo.Message" lazy-init="true"></bean> -->
+	<bean id="message" class="cn.mldn.myspring.di.vo.Message" init-method="initMessage" destroy-method="destoryMessage" lazy-init="true"></bean>
+</beans>
