@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+		<!--要想进行调度任务的处理,需要有一个任务调度的工厂类  -->
+		<bean id="taskFactctory" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+			<!--指定要进行任务调度的类,且这个类需要继承自QuartzJobBean父类  -->
+			<property name="jobClass" value="cn.mldn.myspring.schdule.quartz.MyTask"/>
+			<property name="jobDataMap"><!--定义定时任务的相关配置信息  -->
+				<map>
+					<entry key="timeout" value="0"></entry><!--任务启动后不延迟,立即启动  -->
+				</map>
+			</property>
+		</bean>
+		<!--要定义任务触发的工厂类,主要是定义任务的执行类型  -->
+		<!-- <bean id="simpleTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+			<property name="jobDetail" ref="taskFactctory"/>定义每次要间隔要触发的任务详情 
+			<property name="repeatInterval" value="1000"/>定义任务的间隔时间 
+		</bean> -->
+		<!--定时调度任务  -->
+		<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+			<property name="jobDetail" ref="taskFactctory"/>
+			<property name="cronExpression" value="0 * * * * ?"></property>
+		</bean>
+		<!--配置任务的执行调度器  -->
+		<bean id="schduleFactory" class="org.springframework.scheduling.quartz.SchedulerFactoryBean"> 
+			<property name="triggers">
+				<array>
+					<ref bean="cronTrigger"/><!-- 调度任务的触发器 -->
+				</array>
+			</property>
+		</bean>
+		<!--配置任务的执行调度器  -->
+	<!-- 	<bean id="schduleFactory" class="org.springframework.scheduling.quartz.SchedulerFactoryBean"> 
+			<property name="triggers">
+				<array>
+					<ref bean="simpleTrigger"/>调度任务的触发器
+				</array>
+			</property>
+		</bean> -->
+		<!--启动Annotation注解配置  -->
+		<context:annotation-config/>
+		<!--指定需要扫描注解的包  -->
+		<context:component-scan base-package="cn.mldn.myspring"/>
+</beans>
