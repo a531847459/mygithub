@@ -86,3 +86,7 @@
 2017-10-17 23:47:21,200 INFO [org.quartz.impl.StdSchedulerFactory] - Quartz scheduler version: 2.3.0
 2017-10-17 23:47:21,213 INFO [org.quartz.core.QuartzScheduler] - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@21be3395
 2017-10-17 23:47:21,253 INFO [org.quartz.core.QuartzScheduler] - Scheduler schduleMyTask_$_NON_CLUSTERED started.
+2017-10-17 23:54:29,743 INFO [org.quartz.core.QuartzScheduler] - Scheduler schduleFactory_$_NON_CLUSTERED paused.
+2017-10-17 23:54:29,743 INFO [org.quartz.core.QuartzScheduler] - Scheduler schduleFactory_$_NON_CLUSTERED shutting down.
+2017-10-17 23:54:29,743 INFO [org.quartz.core.QuartzScheduler] - Scheduler schduleFactory_$_NON_CLUSTERED paused.
+2017-10-17 23:54:29,743 INFO [org.quartz.core.QuartzScheduler] - Scheduler schduleFactory_$_NON_CLUSTERED shutdown complete.
