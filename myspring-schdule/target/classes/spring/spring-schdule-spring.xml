@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+		<!--自定义任务类型工厂类  -->
+		<bean id="taskFactorySpring" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+			<property name="targetObject">
+				<bean id="myTaskSpring" class="cn.mldn.myspring.schdule.quartz.MyTaskSpring"/>
+			</property>
+			<property name="targetMethod" value="myTask"></property>
+		</bean>
+		<!--执行定时任务工厂类  -->
+		<bean id="cronTriggerSpring" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+			<property name="jobDetail" ref="taskFactorySpring"></property>		
+			<property name="cronExpression" value="0 * * * * ?"></property>
+		</bean>
+		<!--启动调度任务  -->
+		<bean id="schduleMyTask" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+			<property name="triggers">
+				<ref bean="cronTriggerSpring"/>
+			</property>
+		</bean>
+		<!--启动Annotation注解配置  -->
+		<context:annotation-config/>
+		<!--指定需要扫描注解的包  -->
+		<context:component-scan base-package="cn.mldn.myspring"/>
+</beans>

@@ -10,7 +10,7 @@ public class MyTask extends QuartzJobBean {//定义了一个专门负责任务�
 
 	@Override
 	protected void executeInternal(JobExecutionContext arg0) throws JobExecutionException {
-		System.out.println("【 当前时间】"+new SimpleDateFormat("yyyy-MM-dd HH-mm-ss.SSS").format(new java.util.Date()));
+		System.out.println("【 当前时间】"+new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new java.util.Date()));
 	}
 
 }
