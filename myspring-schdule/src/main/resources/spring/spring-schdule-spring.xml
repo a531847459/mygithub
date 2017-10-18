@@ -26,11 +26,15 @@
 			</property>
 		</bean>
 		 -->
-		 <!--配置任务调度类  -->
+		 <!-- 
+		 配置任务调度类 
 		 <bean id="myTaskSpring" class="cn.mldn.myspring.schdule.quartz.MyTaskSpring"/>
-		 <task:scheduled-tasks><!--进行SpringTask的调度任务配置  -->
-		 	<task:scheduled ref="myTaskSpring" method="myTask" cron="0 * * * * ?"/><!--  -->
+		 <task:scheduled-tasks>进行SpringTask的调度任务配置 
+		 	<task:scheduled ref="myTaskSpring" method="myTask" cron="0 * * * * ?"/>
 		 </task:scheduled-tasks>
+		  -->
+		  <!--基于Annaotaion的SpringTask配置  -->
+		  <task:annotation-driven/>
  <!--启动Annotation注解配置  -->
 		<context:annotation-config/>
 		<!--指定需要扫描注解的包  -->
