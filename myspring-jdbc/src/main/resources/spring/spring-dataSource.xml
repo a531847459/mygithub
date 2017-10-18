@@ -11,14 +11,14 @@
 			<property name="password" value="mysqladmin"/>
 		</bean> -->
 		<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-			<property name="driverClass" value="com.mysql.jdbc.Driver"/>
-			<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/mldnjdbc"/>
-			<property name="user" value="root"></property>
-			<property name="password" value="mysqladmin"></property>
-			<property name="maxPoolSize" value="10"/><!-- 设置最大连接 -->
-			<property name="initialPoolSize" value="1"/><!--初始化连接大小  -->
-			<property name="minPoolSize" value="1"/><!--最小连接数  -->
-			<property name="maxIdleTime" value="1000"/><!--最大等待时间  -->
+			<property name="driverClass" value="${db.driverClass}"/>
+			<property name="jdbcUrl" value="${db.jdbcUrl}"/>
+			<property name="user" value="${db.user}"></property>
+			<property name="password" value="${db.password}"></property>
+			<property name="maxPoolSize" value="${db.maxPoolSize}"/><!-- 设置最大连接 -->
+			<property name="initialPoolSize" value="${db.initialPoolSize}"/><!--初始化连接大小  -->
+			<property name="minPoolSize" value="${db.minPoolSize}"/><!--最小连接数  -->
+			<property name="maxIdleTime" value="${db.maxIdleTime}"/><!--最大等待时间  -->
 		</bean>
 		<context:component-scan base-package="cn.mldn.myspring"/>
 </beans>
