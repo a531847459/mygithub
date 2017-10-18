@@ -4,11 +4,21 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
-		<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 			<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
 			<property name="url" value="jdbc:mysql://localhost:3306/mldnjdbc"/>
 			<property name="username" value="root"/>
 			<property name="password" value="mysqladmin"/>
+		</bean> -->
+		<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+			<property name="driverClass" value="com.mysql.jdbc.Driver"/>
+			<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/mldnjdbc"/>
+			<property name="user" value="root"></property>
+			<property name="password" value="mysqladmin"></property>
+			<property name="maxPoolSize" value="10"/><!-- 设置最大连接 -->
+			<property name="initialPoolSize" value="1"/><!--初始化连接大小  -->
+			<property name="minPoolSize" value="1"/><!--最小连接数  -->
+			<property name="maxIdleTime" value="1000"/><!--最大等待时间  -->
 		</bean>
 		<context:component-scan base-package="cn.mldn.myspring"/>
 </beans>
