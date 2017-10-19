@@ -6,7 +6,7 @@
 <%
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 	+ request.getContextPath();
-	String url=basePath+"/pages/showPre.action";
+	String url=basePath+"/pages/showVo.action";
 %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -15,9 +15,12 @@
 </head>
 <body>
 	<form action="<%=url%>" method="post">
-		<input type="text" name="str" value="mldn"/><br />
-		<input type="checkbox" name="tags" value="王者"/>王者<br />
-		<input type="checkbox" name="tags" value="荣耀"/>荣耀<br />
+		<input type="text" name="ename" value="smith"/><br />
+		<input type="text" name="sal" value="1820.6"/><br />
+		<input type="text" name="age" value="18"/><br />
+		<input type="text" name="birthday" value="1992-10-15"/><br />
+		<input type="text" name="dname" value="人事部"/><br />
+		<input type="text" name="deptno" value="1"/><br />
 		<input type="submit" value="发送"/>
 	</form>
 </body>

@@ -9,7 +9,10 @@
 </head>
 <body>
 	<h1>这是show.jsp页面</h1>
-	<h1>${showDetail}</h1>
-	<h1>${showTags}</h1>
+	<h1>${Emp.ename}</h1>
+	<h1>${Emp.age}</h1>
+	<h1>${Emp.sal}</h1>
+	<h1>${Emp.birthday}</h1>
+	<h1>${Emp.dept}</h1>
 </body>
 </html>
