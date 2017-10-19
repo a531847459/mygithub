@@ -26,6 +26,7 @@
 		<javadoc.version>2.10.4</javadoc.version>
 		<jdk.version>1.8</jdk.version>
 		<spring-test.vesion>5.0.0.RELEASE</spring-test.vesion>
+		<jackson.version>2.9.2</jackson.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- 【AFTER】基础的pom环境属性【AFTER】 -->
 	</properties>
@@ -54,6 +55,23 @@
 	</profiles>
 <dependencyManagement>
   <dependencies>
+  
+  <dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-core</artifactId>
+    <version>${jackson.version}</version>
+</dependency>
+<dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-databind</artifactId>
+    <version>${jackson.version}</version>
+</dependency>
+<dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-annotations</artifactId>
+    <version>${jackson.version}</version>
+</dependency>
+  
 <dependency>
     <groupId>org.springframework</groupId>
     <artifactId>spring-web</artifactId>
